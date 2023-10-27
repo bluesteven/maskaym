@@ -70,6 +70,6 @@ def model_setup():
         url = "https://drive.google.com/uc?id=1o9LeVsXCeD2jmS-G8s7ZISfciaP9v-DU"
         gdown.download(url, filename.as_posix())
     # Load the model
-    model = UnetMobV2Class().load_from_checkpoint(filename.as_posix())
+    model = UnetMobV2Class.load_from_checkpoint(filename.as_posix())
     model.eval()
     return model
