@@ -9,7 +9,7 @@ import numpy as np
 import xarray as xr
 
 from maskay.tensorsat import TensorSat
-
+import pdb
 class MaskayModule:
     def __init__(self, cropsize, overlap, device, batchsize, order, quiet):
         self.cropsize = cropsize
@@ -228,6 +228,7 @@ class MaskayModule:
         return container
     
     def _predict(self, tensor: TensorSat):
+        pdb.set_trace() #调试语句
         # Obtain the zero coordinate to create an IP
         zero_coord = self._MagickCrop(tensor)
         
@@ -245,7 +246,8 @@ class MaskayModule:
         outensor = None
                 
         batch_iter = range(0, IPslen, self.batchsize)
-        for index in tqdm(batch_iter, disable=self.quiet):            
+        for index in tqdm(batch_iter, disable=self.quiet):   
+            pdb.set_trace() #调试语句
             batched_IP = list()
             zerocoords = list()
             for index2 in range(index * self.batchsize, (index + 1) * self.batchsize):
