@@ -5,21 +5,14 @@ import numpy as np
 
 from maskay.torch import Module
 from maskay.utils import get_models_path, softmax
-
+import pdb
 class UnetMobV2(Module):
     def __init__(self):
         super().__init__()
         self.model = model_setup()
 
     def forward(self, x):
-        import sys
-        # 将print输出重定向到文件
-        with open('/content/log.txt', 'a') as file:
-            sys.stdout = file  # 将sys.stdout重定向到文件对象
-            # 使用print输出列表内容
-            print(x.shape)
-            # 恢复sys.stdout到默认值
-            sys.stdout = sys.__stdout__
+        pdb.set_trace()
         return self.model(x)
 
     
