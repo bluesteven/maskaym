@@ -1,5 +1,5 @@
 import numpy as np
-
+import pdb #调试语句
 try:
     import torch
 except ImportError:
@@ -29,27 +29,12 @@ class Module(MaskayModule):
         pass
 
     def _run(self, tensor: np.ndarray):
-        import sys
-        # 将print输出重定向到文件
-        with open('/content/log.txt', 'a') as file:
-            sys.stdout = file  # 将sys.stdout重定向到文件对象
-            # 使用print输出列表内容
-            print(tensor.shape)
-            # 恢复sys.stdout到默认值
-            sys.stdout = sys.__stdout__
+        pdb.set_trace()
         tensor = torch.Tensor(tensor)
 
         # Run the model
         with torch.no_grad():
-            import sys
-            # 将print输出重定向到文件
-            with open('/content/log.txt', 'a') as file:
-                sys.stdout = file  # 将sys.stdout重定向到文件对象
-                # 使用print输出列表内容
-                print(tensor.shape)
-                print(self.device)
-                # 恢复sys.stdout到默认值
-                sys.stdout = sys.__stdout__
+            pdb.set_trace()
             if self.device == "cuda":
                 tensor = tensor.cuda()
             tensor = self.forward(tensor).detach().cpu().numpy()
