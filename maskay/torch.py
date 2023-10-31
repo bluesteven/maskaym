@@ -35,8 +35,8 @@ class Module(MaskayModule):
 
         # Run the model
         with torch.no_grad():
-        with open('/content/log.txt', 'a') as file:
-            file.write(str(self.device))
+            with open('/content/log.txt', 'a') as file:
+                file.write(str(self.device))
             if self.device == "cuda":
                 tensor = tensor.cuda()
             tensor = self.forward(tensor).detach().cpu().numpy()
