@@ -31,10 +31,10 @@ class Module(MaskayModule):
     def _run(self, tensor: np.ndarray):
         import sys
         # 将print输出重定向到文件
-        with open('/content/log.txt', 'w') as file:
+        with open('/content/log.txt', 'a') as file:
             sys.stdout = file  # 将sys.stdout重定向到文件对象
             # 使用print输出列表内容
-            print(tensor)
+            print(tensor.shape)
             # 恢复sys.stdout到默认值
             sys.stdout = sys.__stdout__
         tensor = torch.Tensor(tensor)
@@ -43,10 +43,10 @@ class Module(MaskayModule):
         with torch.no_grad():
             import sys
             # 将print输出重定向到文件
-            with open('/content/log.txt', 'w') as file:
+            with open('/content/log.txt', 'a') as file:
                 sys.stdout = file  # 将sys.stdout重定向到文件对象
                 # 使用print输出列表内容
-                print(tensor)
+                print(tensor.shape)
                 print(self.device)
                 # 恢复sys.stdout到默认值
                 sys.stdout = sys.__stdout__
