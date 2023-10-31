@@ -12,8 +12,14 @@ class UnetMobV2(Module):
         self.model = model_setup()
 
     def forward(self, x):
-        with open('/content/log.txt', 'a') as file:
-            file.write(str(x.shape))
+        import sys
+        # 将print输出重定向到文件
+        with open('/content/log.txt', 'w') as file:
+            sys.stdout = file  # 将sys.stdout重定向到文件对象
+            # 使用print输出列表内容
+            print(x)
+            # 恢复sys.stdout到默认值
+            sys.stdout = sys.__stdout__
         return self.model(x)
 
     
