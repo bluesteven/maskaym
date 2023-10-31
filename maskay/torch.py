@@ -29,6 +29,7 @@ class Module(MaskayModule):
         pass
 
     def _run(self, tensor: np.ndarray):
+        print(tensor.shape)
         tensor = torch.Tensor(tensor)
 
         # Run the model
