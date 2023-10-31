@@ -12,10 +12,8 @@ class UnetMobV2(Module):
         self.model = model_setup()
 
     def forward(self, x):
-        # 配置日志输出到文件
-        logging.basicConfig(filename='/content/log.txt', level=logging.DEBUG)
-        # 输出到日志文件
-        logging.debug('Variable shape: %s', x.shape)
+        with open('/content/log.txt', 'a') as file:
+            file.write(str(x.shape))
         return self.model(x)
 
     
