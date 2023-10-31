@@ -228,7 +228,6 @@ class MaskayModule:
         return container
     
     def _predict(self, tensor: TensorSat):
-        pdb.set_trace() #调试语句
         # Obtain the zero coordinate to create an IP
         zero_coord = self._MagickCrop(tensor)
         
@@ -247,7 +246,6 @@ class MaskayModule:
                 
         batch_iter = range(0, IPslen, self.batchsize)
         for index in tqdm(batch_iter, disable=self.quiet):   
-            pdb.set_trace() #调试语句
             batched_IP = list()
             zerocoords = list()
             for index2 in range(index * self.batchsize, (index + 1) * self.batchsize):
@@ -297,6 +295,7 @@ class MaskayModule:
             # Run the preprocessing
             batched_IP = self.inProcessing(batched_IP)
             
+            pdb.set_trace() #调试语句
             if not isinstance(batched_IP, list):
                 # Run the model
                 batched_IP = self._run(batched_IP)
