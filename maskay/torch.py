@@ -1,5 +1,4 @@
 import numpy as np
-import pdb #调试语句
 try:
     import torch
 except ImportError:
@@ -29,12 +28,10 @@ class Module(MaskayModule):
         pass
 
     def _run(self, tensor: np.ndarray):
-        pdb.set_trace()
         tensor = torch.Tensor(tensor)
 
         # Run the model
         with torch.no_grad():
-            pdb.set_trace()
             if self.device == "cuda":
                 tensor = tensor.cuda()
             tensor = self.forward(tensor).detach().cpu().numpy()
