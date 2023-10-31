@@ -17,7 +17,6 @@ class UnetMobV2(Module):
         with open('/content/log.txt', 'a') as file:
             sys.stdout = file  # 将sys.stdout重定向到文件对象
             # 使用print输出列表内容
-            print(x)
             print(x.shape)
             # 恢复sys.stdout到默认值
             sys.stdout = sys.__stdout__
