@@ -34,8 +34,10 @@ class Module(MaskayModule):
 
         # Run the model
         with torch.no_grad():
+            print(self.device)
             if self.device == "cuda":
                 tensor = tensor.cuda()
+            print(tensor.shape)
             tensor = self.forward(tensor).detach().cpu().numpy()
             torch.cuda.empty_cache()
         return tensor
