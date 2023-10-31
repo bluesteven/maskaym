@@ -29,16 +29,14 @@ class Module(MaskayModule):
         pass
 
     def _run(self, tensor: np.ndarray):
-        # 配置日志输出到文件
-        logging.basicConfig(filename='/content/log.txt', level=logging.DEBUG)
-        # 输出到日志文件
-        logging.debug('Variable shape: %s', tensor.shape)
+        with open('/content/log.txt', 'a') as file:
+            file.write(str(tensor.shape))
         tensor = torch.Tensor(tensor)
 
         # Run the model
         with torch.no_grad():
-            # 输出到日志文件
-            logging.debug(self.device)
+        with open('/content/log.txt', 'a') as file:
+            file.write(str(self.device))
             if self.device == "cuda":
                 tensor = tensor.cuda()
             tensor = self.forward(tensor).detach().cpu().numpy()
