@@ -258,7 +258,7 @@ class MaskayModule:
                     bmrx : (bmrx + self.cropsize), bmry : (bmry + self.cropsize)
                 ]
                 base_cropsize = tensor_cropsize[rbase_name]
-
+                pdb.set_trace() #调试语句
                 for key, _ in zero_coord.items():
                     # Select the zero coordinate
                     mrx, mry = zero_coord[key][index2]
@@ -284,7 +284,7 @@ class MaskayModule:
                 # Append the IP to the batch
                 zerocoords.append((bmrx, bmry))
                 batched_IP.append(IP)
-
+            pdb.set_trace() #调试语句
             # Stack the batch
             batched_IP = np.stack(batched_IP, axis=0)
 
@@ -294,8 +294,7 @@ class MaskayModule:
             
             # Run the preprocessing
             batched_IP = self.inProcessing(batched_IP)
-            
-            pdb.set_trace() #调试语句
+
             if not isinstance(batched_IP, list):
                 # Run the model
                 batched_IP = self._run(batched_IP)
