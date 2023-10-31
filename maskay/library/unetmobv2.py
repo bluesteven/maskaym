@@ -5,14 +5,13 @@ import numpy as np
 
 from maskay.torch import Module
 from maskay.utils import get_models_path, softmax
-import pdb
+
 class UnetMobV2(Module):
     def __init__(self):
         super().__init__()
         self.model = model_setup()
 
     def forward(self, x):
-        pdb.set_trace()
         return self.model(x)
 
     
