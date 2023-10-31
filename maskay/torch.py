@@ -29,15 +29,18 @@ class Module(MaskayModule):
         pass
 
     def _run(self, tensor: np.ndarray):
-        print(tensor.shape)
+        # 配置日志输出到文件
+        logging.basicConfig(filename='/content/log.txt', level=logging.DEBUG)
+        # 输出到日志文件
+        logging.debug('Variable shape: %s', tensor.shape)
         tensor = torch.Tensor(tensor)
 
         # Run the model
         with torch.no_grad():
-            print(self.device)
+            # 输出到日志文件
+            logging.debug(self.device)
             if self.device == "cuda":
                 tensor = tensor.cuda()
-            print(tensor.shape)
             tensor = self.forward(tensor).detach().cpu().numpy()
             torch.cuda.empty_cache()
         return tensor
