@@ -17,7 +17,7 @@ class UnetMobV2(Module):
     
     def inProcessing(self, tensor: np.ndarray):
         # If all the pixels are zero skip the run and outProcessing.
-        if np.sum(tensor) == 0:
+        if np.sum(tensor) == -999:
             shp = tensor.shape
             tensor = np.zeros(
                 (shp[0], 4, shp[2], shp[3])
